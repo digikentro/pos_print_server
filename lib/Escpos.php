@@ -63,7 +63,7 @@ class Escpos
 		/* Shop Address */
 		$this->printer->setTextSize(1, 1);
 		if (isset($data->address) && !empty($data->address)) {
-			$this->printer->text($data->address);
+			$this->printer->text(strip_tags($data->address));
 			$this->printer->feed(2);
 		}
 
