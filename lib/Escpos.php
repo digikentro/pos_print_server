@@ -273,8 +273,8 @@ class Escpos
 			$this->printer->feed();
 		}
 		if (isset($data->discount) && !empty($data->discount)) {
-			$discount = $this->columnify($data->discount_label, strip_tags($data->discount), 50, 50, 0,0);
-			$this->printer->text(strip_tags(rtrim($discount)));
+			$discount = $this->columnify(strip_tags($data->discount_label), $data->discount, 50, 50, 0,0);
+			$this->printer->text(rtrim($discount));
 			$this->printer->feed();
 		}
 		if (isset($data->tax) && !empty($data->tax)) {
