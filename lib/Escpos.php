@@ -343,11 +343,8 @@ class Escpos
 
 		//Total saved
 		$total_line_discount = str_replace($data->currency->symbol, "", $data->total_line_discount);
-		echo $total_line_discount . "\n";
 		$discount = str_replace($data->currency->symbol, "", $data->discount);
-		echo $discount . "\n";
 		$total_saved = (float)$total_line_discount + (float)$discount;
-		echo $total_saved . "\n";
 		$this->printer->setJustification(Printer::JUSTIFY_CENTER);
 		$this->printer->setEmphasis(true);
 		if (!empty($total_saved) && $total_saved > 0) {
