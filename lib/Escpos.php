@@ -252,6 +252,13 @@ class Escpos
 				$string = rtrim($this->columnify($this->columnify($this->columnify($quantity, $product,10,40,0,0), $unit_price, 50,25,0,0), $line_total, 75,25,0,0));
 
 				$this->printer->text($string);
+
+				if(!empty($line['total_line_discount']) && (float)$line['total_line_discount'] > 0){
+					$this->printer->feed(1);
+					$line_discount = 'Discount: ' . $data->currency->symbol . ' ' . $line['total_line_discount'];
+					$this->printer->text($line_discount);
+				}
+
 				$this->printer->feed(2);
 			}
 
@@ -463,3 +470,4 @@ class Escpos
 		}
 	}
 }
+	
