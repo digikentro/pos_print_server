@@ -372,7 +372,7 @@
                 "pdf417Code": false,
                 "pulseBel": false,
                 "pulseStandard": true,
-                "qrCode": false,
+                "qrCode": true,
                 "starCommands": false
             },
             "fonts": {
@@ -434,7 +434,7 @@
                 "pdf417Code": false,
                 "pulseBel": false,
                 "pulseStandard": true,
-                "qrCode": false,
+                "qrCode": true,
                 "starCommands": false
             },
             "fonts": {
@@ -651,7 +651,7 @@
                 "pdf417Code": false,
                 "pulseBel": false,
                 "pulseStandard": true,
-                "qrCode": false,
+                "qrCode": true,
                 "starCommands": false
             },
             "fonts": {
@@ -1301,7 +1301,7 @@
                 "pdf417Code": false,
                 "pulseBel": false,
                 "pulseStandard": true,
-                "qrCode": false,
+                "qrCode": true,
                 "starCommands": false
             },
             "fonts": {
@@ -1626,7 +1626,7 @@
                 "pdf417Code": false,
                 "pulseBel": false,
                 "pulseStandard": true,
-                "qrCode": false,
+                "qrCode": true,
                 "starCommands": false
             },
             "fonts": {

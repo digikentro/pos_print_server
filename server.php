@@ -171,6 +171,16 @@ try {
             }
             return;
 
+        } elseif ($rdata->type == 'print-business-card') {
+            echo '> Printing ', "\n";
+            try {
+                $escpos = new Escpos();
+                $escpos->load($rdata->printer_config);
+                $escpos->print_business_card($rdata->data);
+                echo '> Printed', "\n";
+            } catch (Exception $e) {
+                echo '> Error occurred, unable to print. ', $e->getMessage(), "\n";
+            }
         } else {
             echo '> Unkonwn type ', $rdata->type, "\n";
         }

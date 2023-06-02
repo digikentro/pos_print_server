@@ -32,6 +32,56 @@ class Escpos
 		$this->printer = new Printer($connector, $profile);
 	}
 
+	public function print_business_card($data) {
+		$this->printer->setJustification(Printer::JUSTIFY_CENTER);
+		if (isset($data->date) && !empty($data->date)) {
+			$this->printer->text($data->date);
+			$this->printer->feed(2);
+		}
+
+		/* Header */
+		$this->printer->text($this->drawLine());
+		$this->printer->setEmphasis(true);
+		$this->printer->setTextSize(2, 2);
+		if (isset($data->business_name) && !empty($data->business_name)) {
+			$this->printer->text(strip_tags($data->business_name));
+			$this->printer->feed();
+		}
+		$this->printer->setTextSize(1, 1);
+		$this->printer->setEmphasis(false);
+		$this->printer->text($this->drawLine());
+		$this->printer->feed();
+
+		$this->printer->setEmphasis(true);
+		if (isset($data->business_card_name) && !empty($data->business_card_name)) {
+			$this->printer->text(strip_tags($data->business_card_name). "\n");
+		}
+		$this->printer->setEmphasis(false);
+		if (isset($data->business_card_position) && !empty($data->business_card_position)) {
+			$this->printer->text(strip_tags($data->business_card_position). "\n");
+		}
+		if (isset($data->business_card_number) && !empty($data->business_card_number)) {
+			$this->printer->text(strip_tags($data->business_card_number). "\n");
+		}
+		if (isset($data->business_card_email) && !empty($data->business_card_email)) {
+			$this->printer->text(strip_tags($data->business_card_email). "\n");
+		}
+		$this->printer->feed();
+		if (isset($data->business_card_qr_code_text) && !empty($data->business_card_qr_code_text)) {
+			$this -> printer -> qrCode($data->business_card_qr_code_text, Printer::QR_ECLEVEL_L, 5);
+			$this->printer->feed();
+		}
+		if (isset($data->business_card_footer) && !empty($data->business_card_footer)) {
+			$this->printer->text(strip_tags($data->business_card_footer). "\n");
+			$this->printer->feed();
+		}
+
+		$this->printer->feed();
+		$this->printer->cut();
+
+		$this->printer->close();
+	}
+
 	public function print_invoice($data) {
 
 		//Print logo
